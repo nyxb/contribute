@@ -1,21 +1,21 @@
-# 📝 Contribution Guide
+# Contribution Guide
 
-Hey there! We are really excited that you are interested in contributing. This is a general contribution guide for most of [Nyxb's projects](https://nyxb.yxz/projects). Before submitting your contribution, please make sure to take a moment and read through the following guide:
+Hey there! We are really excited that you are interested in contributing. This is a general contribution guide for most of [Nyxb's projects](https://nyxb.site/projects). Before submitting your contribution, please make sure to take a moment and read through the following guide:
 
 ## 👨‍💻 Repository Setup
 
 We use [`pnpm`](https://pnpm.io/) for most of the projects, and maybe a few with [`yarn`](https://classic.yarnpkg.com/), we highly recommend you install [`nyxi`](https://github.com/nyxb/nyxi) so you don't need to worry about the package manager when switching across different projects.
 
-We will use `nyxi`'s commands in the following code snippets. If you are not using it, you can do the conversion yourself: `nyxi = pnpm install`, `nyxr = pnpm run`.
+We will use `ni`'s commands in the following code snippets. If you are not using it, you can do the conversion yourself: `nyxi = pnpm install`, `nyxr = pnpm run`.
 
 To set the repository up:
 
-| Step                                                                                                     | Command               |
-| -------------------------------------------------------------------------------------------------------- | --------------------- |
-| 1. Install [Node.js](https://nodejs.org/), using the [latest LTS](https://nodejs.org/en/about/releases/) | -                     |
-| 2. [Enable Corepack](#corepack)                                                                          | `corepack enable`     |
-| 3. Install [`@nyxb/nyxi`](https://github.com/nyxb/nyxi)                                                  | `npm i -g @nyxb/nyxi` |
-| 4. Install dependencies under the project root                                                           | `nyxi`                |
+| Step | Command |
+|-------|--------|
+| 1. Install [Node.js](https://nodejs.org/), using the [latest LTS](https://nodejs.org/en/about/releases/) | - |
+| 2. [Enable Corepack](#corepack) | `corepack enable` |
+| 3. Install [`@antfu/ni`](https://github.com/nyxb/nyxi) | `npm i -g @nyxb/nyxi` |
+| 4. Install dependencies under the project root | `ni` |
 
 ## 💡 Commands
 
@@ -23,7 +23,7 @@ To set the repository up:
 
 Start the development environment.
 
-If it's a Node.js package, it will start the build process in watch mode, or [stub the passive watcher when using `buildkarium`](https://dev.to/nyxb/the-enchanted-tale-of-javascripts-magical-evolution-esm-cjs-4kkf).
+If it's a Node.js package, it will start the build process in watch mode, or [stub the passive watcher when using `unbuild`](https://nyxb.blog/en/tech-topics/esm-and-cjs).
 
 If it's a frontend project, it usually starts the dev server. You can then develop and see the changes in real time.
 
@@ -67,28 +67,28 @@ For more, you can run bare `nyxr`, which will prompt a list of all available scr
 
 ## 🙌 Sending Pull Request
 
-### 💬 Discuss First
+### Discuss First
 
 Before you start to work on a feature pull request, it's always better to open a feature request issue first to discuss with the maintainers whether the feature is desired and the design of those features. This would help save time for both the maintainers and the contributors and help features to be shipped faster.
 
 For typo fixes, it's recommended to batch multiple typo fixes into one pull request to maintain a cleaner commit history.
 
-### 📌 Commit Convention
+### Commit Convention
 
-We use [Conventional Emoji Commits](https://www.conventional-emoji-commits.org/) for commit messages, which allows the changelog to be auto-generated based on the commits. Please read the guide through if you aren't familiar with it already.
+We use [Conventional Commits](https://www.conventionalcommits.org/) for commit messages, which allows the changelog to be auto-generated based on the commits. Please read the guide through if you aren't familiar with it already.
 
-Only `🐛fix:` and `✨feat:` will be presented in the changelog.
+Only `fix:` and `feat:` will be presented in the changelog.
 
-Note that `🐛fix:` and `✨feat:` are for **actual code changes** (that might affect logic).
-For typo or document changes, use `📝docs:` or `🔧chore:` instead:
+Note that `fix:` and `feat:` are for **actual code changes** (that might affect logic).
+For typo or document changes, use `docs:` or `chore:` instead:
 
-- ~~`🐛fix: typo`~~ -> `📝docs: fix typo`
+- ~~`fix: typo`~~ -> `docs: fix typo`
 
 ### Pull Request
 
 If you don't know how to send a Pull Request, we recommend reading [the guide](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request).
 
-When sending a pull request, make sure your PR's title also follows the [Commit Emoji Convention](#commit-conventions).
+When sending a pull request, make sure your PR's title also follows the [Commit Convention](#commit-conventions).
 
 If your PR fixes or resolves an existing issue, please add the following line in your PR description (replace `123` with a real issue number):
 
@@ -104,21 +104,21 @@ It's ok to have multiple commits in a single PR, you don't need to rebase or for
 
 This section is for maintainers with write access, or if you want to maintain your own forks.
 
-### 🔧 Update Dependencies
+### Update Dependencies
 
 Keeping dependencies up-to-date is one of the important aspects to keep projects alive and getting latest bug fixes on time. We recommend to update dependencies in weekly or bi-weekly intervals.
 
-We use [`freshdeps`](https://github.com/nyxblabs/freshdeps) to update the dependencies manually most of the time. As deps updating bots like [Dependabot](https://github.com/dependabot) or [Renovate](https://renovatebot.com/) could be a bit annoying when you have a lot projects.
+We use [`taze`](https://github.com/antfu/taze) to update the dependencies manually most of the time. As deps updating bots like [Dependabot](https://github.com/dependabot) or [Renovate](https://renovatebot.com/) could be a bit annoying when you have a lot projects.
 
-With `freshdeps`, you can run `freshdeps major -Ir` to check and select the versions to update interactive. `-I` stands for `--interactive`, `-r` stands for `--recursive` for monorepo.
+With `taze`, you can run `taze major -Ir` to check and select the versions to update interactive. `-I` stands for `--interactive`, `-r` stands for `--recursive` for monorepo.
 
 After bumpping, we install them, runing build and test to verify nothing breaks before pushing to main.
 
-### 🚀 Releasing
+### Releasing
 
 Before you do, make sure you have lastest git commit from upstream and all CI passes.
 
-For most of the time, we do `nyxr release`. It will prompts a list for the target version you want to release. After select, it will bump your package.json and commit the changes with git tag, powered by [`monoflow`](https://github.com/nyxblabs/monoflow).
+For most of the time, we do `nr release`. It will prompts a list for the target version you want to release. After select, it will bump your package.json and commit the changes with git tag, powered by [`bumpp`](https://github.com/antfu/bumpp).
 
 There are two kinds of publishing setup, either of them are done by `nyxr release` already.
 
@@ -142,23 +142,23 @@ So whenever you run `npm publish`, it will make sure you have the latest change 
 
 </td><td width="500px" valign="top">
 
-#### 🛠️ Build on CI
+#### Build on CI
 
 For complex projects that take long time to build, we might move the building and publishing process to CI. So it doesn't block your local workflow.
 
-They will be triggered by the `v` prefixed git tag added by `monoflow`. The action is usually defined under `.github/workflows/release.yml`
+They will be triggered by the `v` prefixed git tag added by `bumpp`. The action is usually defined under `.github/workflows/release.yml`
 
 > When maintaining your own fork, you might need to see `NPM_TOKEN` secret to your repository for it to publish the packages.
 
 </td></tr></table>
 
-Changelogs are always generated by monoflow.
+Changelogs are always generated by GitHub Actions.
 
 ## 📖 References
 
-### 📦 Corepack
+### Corepack
 
-#### 📚 TL;DR
+#### TL;DR
 
 To enable it, run
 
@@ -170,7 +170,7 @@ You only need to do it once after Node.js is installed.
 
 <table><tr><td width="500px" valign="top">
 
-#### ❓ What's Corepack
+#### What's Corepack
 
 [Corepack](https://nodejs.org/api/corepack.html) makes sure you are using the correct version for package manager when you run corresponding commands. Projects might have `packageManager` field in their `package.json`.
 
@@ -188,13 +188,13 @@ Under projects with configuration as shown on the right, corepack will install `
 
 </td></tr></table>
 
-### 🚦 ESLint
+### ESLint
 
 We use [ESLint](https://eslint.org/) for both linting and formatting with [`@nyxb/eslint-config`](https://github.com/nyxb/eslint-config).
 
 <table><tr><td width="500px" valign="top">
 
-#### ⚙️ IDE Setup
+#### IDE Setup
 
 We recommend using [VS Code](https://code.visualstudio.com/) along with the [ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint).
 
@@ -215,15 +215,15 @@ VS Code's `settings.json`
 
 </td></tr></table>
 
-### 🚫 No Prettier
+### No Prettier
 
-Since ESLint is already configured to format the code, there is no need to duplicate the functionality with Prettier. To format the code, you can run `nyxr lint --fix` or referring the [ESLint section](#eslint) for IDE Setup.
+Since ESLint is already configured to format the code, there is no need to duplicate the functionality with Prettier ([*Why I don't Use Prettier*](https://nyxb.blog/en/tech-topics/a-double-edged-sword-for-code-formatting)). To format the code, you can run `nyxr lint --fix` or referring the [ESLint section](#eslint) for IDE Setup.
 
 If you have Prettier installed in your editor, we recommend you disable it when working on the project to avoid conflict.
 
 ## 🗒 Additional Info
 
-In case you are interested in, here is Nyxb's personal configrations and setups:
+In case you are interested in, here is Anthony's personal configrations and setups:
 
 - [nyxb/dotfiles](https://github.com/nyxb/dotfiles) - ZSH configs and other dotfiles
 - [nyxb/vscode-settings](https://github.com/nyxb/vscode-settings) - VS Code settings
@@ -232,9 +232,9 @@ In case you are interested in, here is Nyxb's personal configrations and setups:
 CLI Tools
 
 - [nyxi](https://github.com/nyxb/nyxi) - package manager alias
-- [dynot](https://github.com/nyxblabs/dynot) - TypeScript runner
-- [freshdeps](https://github.com/nyxb/freshdeps) - dependency updater
-- [monoflow](https://github.com/nyxb/monoflow) - version, release and changelog bumpper 
+- [esno](https://github.com/antfu/esno) - TypeScript runner
+- [taze](https://github.com/antfu/taze) - dependency updater
+- [bumpp](https://github.com/antfu/bumpp) - version bumpper
 
 In addition of `nyxi`, here is a few shell aliases to be even lazier:
 
