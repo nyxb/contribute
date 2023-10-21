@@ -232,9 +232,9 @@ In case you are interested in, here is Anthony's personal configrations and setu
 CLI Tools
 
 - [nyxi](https://github.com/nyxb/nyxi) - package manager alias
-- [esno](https://github.com/antfu/esno) - TypeScript runner
-- [taze](https://github.com/antfu/taze) - dependency updater
-- [bumpp](https://github.com/antfu/bumpp) - version bumpper
+- [esno](https://github.com/nyxb/esno) - TypeScript runner
+- [freshdeps](https://github.com/nyxb/freshdeps) - dependency updater
+- [bumpp](https://github.com/nyxb/bumpp) - version bumpper
 
 In addition of `nyxi`, here is a few shell aliases to be even lazier:
 
