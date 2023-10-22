@@ -118,7 +118,7 @@ After bumpping, we install them, runing build and test to verify nothing breaks 
 
 Before you do, make sure you have lastest git commit from upstream and all CI passes.
 
-For most of the time, we do `nr release`. It will prompts a list for the target version you want to release. After select, it will bump your package.json and commit the changes with git tag, powered by [`bumpp`](https://github.com/antfu/bumpp).
+For most of the time, we do `nr release`. It will prompts a list for the target version you want to release. After select, it will bump your package.json and commit the changes with git tag, powered by [`bumping`](https://github.com/nyxb/bumping).
 
 There are two kinds of publishing setup, either of them are done by `nyxr release` already.
 
@@ -146,7 +146,7 @@ So whenever you run `npm publish`, it will make sure you have the latest change 
 
 For complex projects that take long time to build, we might move the building and publishing process to CI. So it doesn't block your local workflow.
 
-They will be triggered by the `v` prefixed git tag added by `bumpp`. The action is usually defined under `.github/workflows/release.yml`
+They will be triggered by the `v` prefixed git tag added by `bumping`. The action is usually defined under `.github/workflows/release.yml`
 
 > When maintaining your own fork, you might need to see `NPM_TOKEN` secret to your repository for it to publish the packages.
 
@@ -234,7 +234,7 @@ CLI Tools
 - [nyxi](https://github.com/nyxb/nyxi) - package manager alias
 - [esno](https://github.com/nyxb/esno) - TypeScript runner
 - [freshdeps](https://github.com/nyxb/freshdeps) - dependency updater
-- [bumpp](https://github.com/nyxb/bumpp) - version bumpper
+- [bumping](https://github.com/nyxb/bumping) - version bumpper
 
 In addition of `nyxi`, here is a few shell aliases to be even lazier:
 
